@@ -136,6 +136,26 @@ const scrollToTop = () => {
     });
 };
 
+// Toggle the section visibility and content
+// Toggle the section visibility and content
+const toggleSection = (event) => {
+    const section = event.target.closest('section');
+    if (section) {
+        section.classList.toggle('toggle');
+        const sectionContent = section.querySelector('.section-content');
+        const headerIcon = section.querySelector('.header-icon');
+        if (sectionContent && headerIcon) {
+            if (section.classList.contains('toggle')) {
+                sectionContent.style.display = 'block';
+                headerIcon.innerHTML = '<i class="fas fa-minus"></i>';
+            } else {
+                sectionContent.style.display = 'none';
+                headerIcon.innerHTML = '<i class="fas fa-plus"></i>';
+            }
+        }
+    }
+};
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -154,10 +174,33 @@ const buildNavMenu = () => {
         anchor.classList.add('menu__link');
         listItem.appendChild(anchor);
         fragment.appendChild(listItem);
+
+        // Create the header icon element
+        const headerIcon = document.createElement('div');
+        headerIcon.classList.add('header-icon');
+        headerIcon.innerHTML = '<i class="fas fa-plus"></i>';
+
+        // Create a wrapper for the section header
+        const headerWrapper = document.createElement('div');
+        headerWrapper.classList.add('section-header-wrapper');
+
+        // Move the section header into the wrapper
+        const sectionHeader = section.querySelector('h2');
+        sectionHeader.parentNode.insertBefore(headerWrapper, sectionHeader);
+        headerWrapper.appendChild(sectionHeader);
+
+        // Append the header icon to the header wrapper
+        headerWrapper.appendChild(headerIcon);
     });
 
     navBarList.appendChild(fragment);
 };
+
+// Attach the toggleSection function to the click event of the section headers
+const sectionHeaders = document.querySelectorAll('.section-header');
+sectionHeaders.forEach((header) => {
+    header.addEventListener('click', toggleSection);
+});
 
 // Scroll to anchor ID using scrollTO event
 // Scroll to section on link click
