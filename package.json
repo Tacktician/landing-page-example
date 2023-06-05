@@ -1,0 +1,27 @@
+{
+  "name": "landing-page-example",
+  "version": "1.0.0",
+  "description": "Udacity Landing Page Project",
+  "main": "app.js",
+  "devDependencies": {
+    "eslint": "^8.42.0"
+  },
+  "scripts": {
+    "lint": "npx eslint js/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tackcity/landing-page-example.git"
+  },
+  "keywords": [
+    "udacity",
+    "javascript",
+    "frontend"
+  ],
+  "author": "James Tacker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tackcity/landing-page-example/issues"
+  },
+  "homepage": "https://github.com/tackcity/landing-page-example#readme"
+}
